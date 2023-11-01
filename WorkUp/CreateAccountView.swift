@@ -1,22 +1,33 @@
+//
+//  CreateAccountView.swift
+//  WorkUp
+//
+//  Created by Elijah Ochoa on 10/31/23.
+//
+
 import SwiftUI
 
-
-struct LoginView: View {
+struct CreateAccountView : View{
     @State private var username : String = ""
     @State private var password : String = ""
     @State private var usernameValidationString : String = ""
     @State private var passwordValidationString : String = ""
     @ObservedObject var viewManager : ViewManager
-    var body: some View {
+    var body : some View {
         VStack {
            
             Text("Workup")
                 .foregroundColor(Color.white)
                 .font(.custom("openSans", size: 60.0))
+            Spacer()
+                .frame(height: 20.0)
+            Text("Create Account")
+                .foregroundColor(Color.white)
+                .font(.custom("OpenSans-SemiBold", size: 40.0))
                 
             Spacer()
                 .padding(.bottom, 10.0)
-                .frame(height: 50.0)
+                .frame(height: 20.0)
                 
             VStack{
                 HStack{
@@ -42,7 +53,7 @@ struct LoginView: View {
                 
                 Spacer()
                     .frame(height: 50.0)
-                Button("Submit"){validateUser()}
+                Button("Submit"){createAccount()}
                     
                     .fontWeight(.bold)
                     .frame(width: 180)
@@ -50,13 +61,7 @@ struct LoginView: View {
                     .font(.custom("OpenSans-SemiBold", size: 25.0))
                     .background(Color.white)
                     .cornerRadius(20)
-                Spacer().frame(height :20.0)
-                Button("Create Account"){viewManager.currentView = "createAccountView"}.fontWeight(.bold)
-                    .frame(width: 220)
-                    .foregroundColor(Color.black)
-                    .font(.custom("OpenSans-SemiBold", size: 25.0))
-                    .background(Color.white)
-                    .cornerRadius(20)
+               
               
             }
             .frame(width: 350, height: 320)
@@ -69,13 +74,13 @@ struct LoginView: View {
         .background(Color.appBackground.ignoresSafeArea())
         
     }
-    private func validateUser(){
-        print("The username is \(username) and the password is \(password)")
+    private func createAccount()
+    {
+        print("Account created")
         viewManager.currentView = "calendarView"
     }
-    
 }
-
 #Preview {
     ContentView()
 }
+
