@@ -7,7 +7,7 @@
 
 import SwiftUI
 class ViewManager : ObservableObject{
-    @Published var currentView : String = "calendarView"
+    @Published var currentView : String = "workoutView"
     
 }
 struct Event {
@@ -133,6 +133,14 @@ struct ContentView: View {
                 }
             }
         
+//        ZStack{
+//            WorkoutView(viewManager : viewManager)
+//            VStack{
+//                Spacer().frame(height: 700).background()
+//                navBar(viewManager: viewManager)
+//            }
+        }
+        
        
            
                 
@@ -140,7 +148,7 @@ struct ContentView: View {
        
         
     }
-}
+
 #Preview {
     ContentView()
 }
