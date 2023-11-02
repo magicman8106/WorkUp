@@ -63,37 +63,63 @@ class UserData : ObservableObject {
 struct navBar : View {
     @ObservedObject var viewManager : ViewManager
     var body : some View{
-        HStack{
-            Text("Nav bar")
+      
+        VStack{                
+            Spacer().frame(height: 40)
+
+            HStack{
+                
+                VStack{
+                    Spacer().frame(height: 5)
+                    Image(systemName : "figure.strengthtraining.traditional")
+                    Text("Nav Bar")
+                }
+            }.background(Color.navBar)
+                
         }
+           
+                
+            
+     
+        
     }
 }
 struct ContentView: View {
     
     @ObservedObject var viewManager = ViewManager()
     var body: some View {
-        ZStack{
-            if(viewManager.currentView == "loginView")
-            {
-                LoginView(viewManager: viewManager)
-            } else if (viewManager.currentView == "createAccountView")
-            {
-                CreateAccountView(viewManager : viewManager)
-            } else if(viewManager.currentView == "calendarView")
-            {
-                CalendarView(viewManager : viewManager)
-            }else {
-                Text("Unknown view \(viewManager.currentView)")
-            }
-            if(viewManager.currentView != "loginView")
-            {
-                VStack{
-                    Spacer()
-                    navBar(viewManager: viewManager)
+        
+            ZStack{
+                if(viewManager.currentView == "loginView")
+                {
+                    LoginView(viewManager: viewManager)
+                } else if (viewManager.currentView == "createAccountView")
+                {
+                    CreateAccountView(viewManager : viewManager)
+                } else if(viewManager.currentView == "calendarView")
+                {
+                    CalendarView(viewManager : viewManager)
+                }else {
+                    Text("Unknown view \(viewManager.currentView)")
                 }
-                
+               
+                if(viewManager.currentView != "loginView")
+                {
+                   
+                    VStack{
+                        Spacer().frame(height: 700).background()
+                        navBar(viewManager: viewManager)
+                    }
+                    
+                    
+                    
+                }
             }
-        }
+        
+       
+           
+                
+        
        
         
     }
