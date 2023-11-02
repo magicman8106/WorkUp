@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9A4CFB162AF353FA00EC29DB /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CFB152AF353FA00EC29DB /* WorkoutView.swift */; };
+		9A4CFB182AF36FE100EC29DB /* UserDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CFB172AF36FE100EC29DB /* UserDataClass.swift */; };
 		9A91704F2AF0F231007BC106 /* WorkUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91704E2AF0F231007BC106 /* WorkUpApp.swift */; };
 		9A9170512AF0F231007BC106 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9170502AF0F231007BC106 /* ContentView.swift */; };
 		9A9170532AF0F237007BC106 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A9170522AF0F237007BC106 /* Assets.xcassets */; };
@@ -80,6 +81,7 @@
 
 /* Begin PBXFileReference section */
 		9A4CFB152AF353FA00EC29DB /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		9A4CFB172AF36FE100EC29DB /* UserDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataClass.swift; sourceTree = "<group>"; };
 		9A91704B2AF0F231007BC106 /* WorkUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A91704E2AF0F231007BC106 /* WorkUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkUpApp.swift; sourceTree = "<group>"; };
 		9A9170502AF0F231007BC106 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				9AA8C9F52AF188BE00CC4948 /* CreateAccountView.swift */,
 				9AA8C9FE2AF1965200CC4948 /* CalendarView.swift */,
 				9A4CFB152AF353FA00EC29DB /* WorkoutView.swift */,
+				9A4CFB172AF36FE100EC29DB /* UserDataClass.swift */,
 			);
 			path = WorkUp;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				9A9170792AF0F531007BC106 /* LoginView.swift in Sources */,
 				9A9170512AF0F231007BC106 /* ContentView.swift in Sources */,
 				9AA8C9F62AF188BE00CC4948 /* CreateAccountView.swift in Sources */,
+				9A4CFB182AF36FE100EC29DB /* UserDataClass.swift in Sources */,
 				9A4CFB162AF353FA00EC29DB /* WorkoutView.swift in Sources */,
 				9A91704F2AF0F231007BC106 /* WorkUpApp.swift in Sources */,
 			);

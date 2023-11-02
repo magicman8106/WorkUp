@@ -8,11 +8,35 @@
 import SwiftUI
 struct workoutView : View {
     @Binding var showingGroupName : String
-
+    @EnvironmentObject var userData : UserData
     var body : some View
     {
         VStack{
             Text("\(showingGroupName)")
+            Spacer().frame(height: 20)
+            ScrollView{
+                ForEach(userData.workoutNames[showingGroupName] ?? [], id: \.self){
+                    value in
+                    HStack{
+                        Text(value).font(.custom("OpenSans-SemiBold", size: 20.0)).foregroundColor(.black).frame(width: 180)
+                    }
+                    
+                    
+                    
+                }
+            }
+            
+            Button("Create new"){print("Create New")}
+                .fontWeight(.bold)
+                .frame(width: 210, height : 50 )
+                .foregroundColor(Color.black)
+                .font(.custom("OpenSans-SemiBold", size: 25.0))
+                .background(Color.white)
+                .cornerRadius(20)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20) // Overlay a rounded rectangle with the same corner radius
+                        .stroke(Color.black, lineWidth: 2) // Set the border color and width
+                )
 
         }.padding(.vertical, 5.0).frame(width: 300).frame(maxWidth: .infinity) .font(.custom("OpenSans-SemiBold", size: 25.0))
             .background(Color.white).foregroundColor(Color.black).cornerRadius(20)
@@ -20,11 +44,12 @@ struct workoutView : View {
                 RoundedRectangle(cornerRadius: 20) // Overlay a rounded rectangle with the same corner radius
                     .stroke(Color.black, lineWidth: 2) // Set the border color and width
             )
+        
     }
 }
 struct WorkoutView : View{
     @ObservedObject var viewManager : ViewManager
-    @ObservedObject var userData = UserData()
+    @EnvironmentObject var userData : UserData
     @State var selectedMuscleGroup  : String = ""
     var body : some View{
         VStack{
