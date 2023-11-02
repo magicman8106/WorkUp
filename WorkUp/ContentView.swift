@@ -65,16 +65,26 @@ struct navBar : View {
     var body : some View{
       
         VStack{                
-            Spacer().frame(height: 40)
+            Spacer().frame(height: 70)
 
             HStack{
                 
                 VStack{
+                    Image(systemName : "figure.strengthtraining.traditional").font(.system(size: 20))
                     Spacer().frame(height: 5)
-                    Image(systemName : "figure.strengthtraining.traditional")
-                    Text("Nav Bar")
-                }
-            }.background(Color.navBar)
+                    Text("Workouts")
+                }.onTapGesture {
+                    changeView(newView : "workoutView")
+                }.frame(height: 60)
+                VStack{
+                    Spacer().frame(height: 6)
+                    Image(systemName : "calendar").font(.system(size: 20))
+                    Spacer().frame(height: 5)
+                    Text("Calendar").padding(.top, 2.0)
+                }.onTapGesture {
+                    changeView(newView : "calendarView")
+                }.frame(height: 60)
+            }.background(Color.navBar).cornerRadius(5)
                 
         }
            
@@ -82,6 +92,10 @@ struct navBar : View {
             
      
         
+    }
+    func changeView(newView : String)
+    {
+        viewManager.currentView=newView
     }
 }
 struct ContentView: View {
@@ -99,7 +113,10 @@ struct ContentView: View {
                 } else if(viewManager.currentView == "calendarView")
                 {
                     CalendarView(viewManager : viewManager)
-                }else {
+                } else if (viewManager.currentView == "workoutView")
+                {
+                    WorkoutView(viewManager : viewManager)
+                } else {
                     Text("Unknown view \(viewManager.currentView)")
                 }
                
