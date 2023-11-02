@@ -7,7 +7,7 @@
 
 import SwiftUI
 class ViewManager : ObservableObject{
-    @Published var currentView : String = "loginView"
+    @Published var currentView : String = "calendarView"
     
 }
 struct Event {
@@ -30,7 +30,7 @@ class UserData : ObservableObject {
         ]
         let currentDate = Date()
         let calendar = Calendar.current
-        let tomorrow = calendar.date(byAdding: .day, value: 1, to: currentDate)
+        _ = calendar.date(byAdding: .day, value: 1, to: currentDate)
         generateEventsForTomorrowAndDayAfter()
         
     }
@@ -60,25 +60,41 @@ class UserData : ObservableObject {
             events.append(newEvent)
         }
 }
-
+struct navBar : View {
+    @ObservedObject var viewManager : ViewManager
+    var body : some View{
+        HStack{
+            Text("Nav bar")
+        }
+    }
+}
 struct ContentView: View {
     
     @ObservedObject var viewManager = ViewManager()
     var body: some View {
+        ZStack{
+            if(viewManager.currentView == "loginView")
+            {
+                LoginView(viewManager: viewManager)
+            } else if (viewManager.currentView == "createAccountView")
+            {
+                CreateAccountView(viewManager : viewManager)
+            } else if(viewManager.currentView == "calendarView")
+            {
+                CalendarView(viewManager : viewManager)
+            }else {
+                Text("Unknown view \(viewManager.currentView)")
+            }
+            if(viewManager.currentView != "loginView")
+            {
+                VStack{
+                    Spacer()
+                    navBar(viewManager: viewManager)
+                }
+                
+            }
+        }
        
-//        if(viewManager.currentView == "loginView")
-//        {
-//            LoginView(viewManager: viewManager)
-//        } else if (viewManager.currentView == "createAccountView")
-//        {
-//            CreateAccountView(viewManager : viewManager)
-//        } else if(viewManager.currentView == "calendarView")
-//        {
-//            CalendarView(viewManager : viewManager)
-//        }else {
-//            Text("Unknown view \(viewManager.currentView)")
-//        }
-        CalendarView(viewManager : viewManager)
         
     }
 }
