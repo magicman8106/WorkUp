@@ -22,7 +22,7 @@ struct WorkoutPicker : View{
     var body : some View{
         VStack{
             HStack{
-                Button(action :{ goBack()}){
+                Button(action :{ goBackWorkout()}){
                     Image(systemName: "arrow.left.to.line")
                         .foregroundColor(Color.black)
                         .padding(.leading, 60.0)
@@ -90,7 +90,7 @@ struct WorkoutPicker : View{
                             
                         }
                     }
-                    Button("Submit"){submit()}.fontWeight(.bold)
+                    Button("Submit"){submitWorkout()}.fontWeight(.bold)
                         .frame(width: 210, height : 50 )
                         .foregroundColor(Color.black)
                         .font(.custom("OpenSans-SemiBold", size: 25.0))
@@ -100,7 +100,7 @@ struct WorkoutPicker : View{
                             RoundedRectangle(cornerRadius: 20) // Overlay a rounded rectangle with the same corner radius
                                 .stroke(Color.black, lineWidth: 2) // Set the border color and width
                         )
-                    Button("Create new"){createNew()}
+                    Button("Create new"){createNewWorkout()}
                         .fontWeight(.bold)
                         .frame(width: 210, height : 50 )
                         .foregroundColor(Color.black)
@@ -111,23 +111,19 @@ struct WorkoutPicker : View{
                             RoundedRectangle(cornerRadius: 20) // Overlay a rounded rectangle with the same corner radius
                                 .stroke(Color.black, lineWidth: 2) // Set the border color and width
                         )
-                    
-                    
                 }
-                
             }
-             
         }
-        
+    }
+
+
+    func createNewWorkout(){
         
     }
-    func createNew(){
-        
-    }
-    func submit(){
+    func submitWorkout(){
         userData.addEvent(date: calendarViewManager.selectedDate ?? Date(), title: "Workout")
     }
-    func goBack(){
+    func goBackWorkout(){
         if(selectedMuscleGroup != "")
         {
             //de select muscle group
@@ -137,22 +133,88 @@ struct WorkoutPicker : View{
             showWorkoutView = false
         }
     }
+} // end of workOutPicker Struct
+
+struct FoodAdder : View{
+    @Binding var dateString : String
+    @ObservedObject var calendarViewManager : CalendarViewManager
+    @ObservedObject var userData : UserData
+    @Binding var showFoodAdderView : Bool
+    @State var foodToAdd : String = ""
+    @State var calsForFood : String = ""
     
+    var body : some View{
+        VStack{
+            HStack{
+                Button(action :{ goBack()}){
+                    Image(systemName: "arrow.left.to.line")
+                        .foregroundColor(Color.black)
+                        .padding(.leading, 60.0)
+                }
+                
+                Spacer()
+                    .frame(width: 10.0)
+                Text("\(dateString)").font(.custom("OpenSans-SemiBold", size: 20.0)).frame(width: 150)
+                Spacer()
+                    .frame(width: 90.0)
+                
+            }.padding(.top, 30.0)
+           
+            VStack{
+                Text("Please enter food information below.").font(.custom("OpenSans-SemiBold", size: 20.0))
+                Spacer().frame(height: 20)
+                TextField(text: $foodToAdd, prompt: Text("Enter Food Name")) {
+                        Text("Name:")
+                    }.frame(width: 210, height : 50 )
+
+                Spacer().frame(height: 20)
+                TextField(text: $calsForFood, prompt: Text("Enter Calorie Count")) {
+                        Text("Calories:")
+                    }.frame(width: 210, height : 50 )
+                Spacer().frame(height: 20)
+                Button("Add Food"){submitFood()}
+                    .fontWeight(.bold)
+                    .frame(width: 210, height : 50 )
+                    .foregroundColor(Color.black)
+                    .font(.custom("OpenSans-SemiBold", size: 25.0))
+                    .background(Color.white)
+                    .cornerRadius(20)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20) // Overlay a rounded rectangle with the same corner radius
+                            .stroke(Color.black, lineWidth: 2) // Set the border color and width
+                    )
+            }
+        }
+    }
     
-    
-}
+    func submitFood(){
+        foodToAdd = ""
+        calsForFood = ""
+        userData.addEvent(date: calendarViewManager.selectedDate ?? Date(), title: "Meal")
+    }
+    func goBack(){
+        showFoodAdderView = false
+    }
+}//end of foodAdder Struct
+
 struct DateDetailView : View{
     @ObservedObject var calendarViewManager : CalendarViewManager
     @State var selectedDateString : String
     @State private var showAddWorkoutView : Bool = false
+    @State private var showFoodAdderView : Bool = false
     @ObservedObject var userData : UserData
 
     var body : some View{
         VStack{
+            //somewhere arounf here is where the date async happens when clicking a button to add a workout and foods i think
             if(showAddWorkoutView)
             {
-                WorkoutPicker(dateString : $selectedDateString,calendarViewManager : calendarViewManager, userData: userData, showWorkoutView: $showAddWorkoutView)
-            } else {
+                WorkoutPicker(dateString : $selectedDateString, calendarViewManager : calendarViewManager, userData: userData, showWorkoutView: $showAddWorkoutView)
+            }
+            else if(showFoodAdderView){
+                FoodAdder(dateString : $selectedDateString,calendarViewManager : calendarViewManager, userData: userData, showFoodAdderView: $showFoodAdderView)
+            }
+            else {
                 if let selectedDate = calendarViewManager.selectedDate {
                     Text(formattedDate(from : selectedDate)).font(.custom("OpenSans-SemiBold", size: 20.0))
                 } else {
@@ -183,7 +245,7 @@ struct DateDetailView : View{
                     )
                     
                 Spacer().frame(height : 10)
-                Button("Add Meals"){addMeals()}
+                Button("Add Meal"){showFoodAdderView = true}
                     .fontWeight(.bold)
                     .frame(width: 210, height : 50 )
                     .foregroundColor(Color.black)
@@ -235,7 +297,7 @@ struct CalendarView : View{
             
             
         }
-        .background(Color.appBackground)
+        .background(Color("app_background"))
     }
 }
 struct CalendarViewRepresentable : UIViewRepresentable{
@@ -318,10 +380,10 @@ struct CalendarViewRepresentable : UIViewRepresentable{
    
     
 }
-
 #Preview {
     ContentView()
 }
+
 extension Date {
 
     public var removeTimeStamp : Date? {

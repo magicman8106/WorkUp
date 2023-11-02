@@ -71,8 +71,8 @@ struct CreateAccountView : View{
         }
         .padding(.bottom, 200.0)
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
-        .background(Color.appBackground.ignoresSafeArea())
-        
+        .background(Color("app_background"))
+
     }
     private func createAccount()
     {

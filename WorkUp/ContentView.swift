@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  WorkUp
 //
-//  Created by Elijah Ochoa on 10/31/23.
+//  Created by Elijah Ochoa and Noah Fuentes on 10/31/23.
 //
 
 import SwiftUI
@@ -66,23 +66,22 @@ struct ContentView: View {
     @ObservedObject var viewManager = ViewManager()
     var body: some View {
        
-//        if(viewManager.currentView == "loginView")
-//        {
-//            LoginView(viewManager: viewManager)
-//        } else if (viewManager.currentView == "createAccountView")
-//        {
-//            CreateAccountView(viewManager : viewManager)
-//        } else if(viewManager.currentView == "calendarView")
-//        {
-//            CalendarView(viewManager : viewManager)
-//        }else {
-//            Text("Unknown view \(viewManager.currentView)")
-//        }
-        CalendarView(viewManager : viewManager)
+        if(viewManager.currentView == "loginView")
+        {
+            LoginView(viewManager: viewManager)
+        } else if (viewManager.currentView == "createAccountView")
+        {
+            CreateAccountView(viewManager : viewManager)
+        } else if(viewManager.currentView == "calendarView")
+        {
+            CalendarView(viewManager : viewManager)
+        }else {
+            Text("Unknown view \(viewManager.currentView)")
+        }
+   //     CalendarView(viewManager : viewManager)
         
     }
 }
 #Preview {
     ContentView()
 }
-
