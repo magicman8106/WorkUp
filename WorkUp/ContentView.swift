@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  WorkUp
 //
-//  Created by Elijah Ochoa on 10/31/23.
+//  Created by Elijah Ochoa and Noah Fuentes on 10/31/23.
 //
 
 import SwiftUI
@@ -100,15 +100,8 @@ struct ContentView: View {
             .environmentObject(userData)
         }
         
-       
-           
-                
-        
-       
-        
-}
+}//end of ContentView
 
 #Preview {
     ContentView()
 }
-
