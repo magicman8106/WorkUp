@@ -3,10 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>UIAppFonts</key>
-	<array>
-		<string>OpenSans-Bold.ttf</string>
-		<string>openSans.ttf</string>
-		<string>OpenSans-SemiBold.ttf</string>
-	</array>
+	<array/>
 </dict>
 </plist>

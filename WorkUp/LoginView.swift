@@ -1,9 +1,44 @@
 import SwiftUI
 
-
+@MainActor
+final class SignInEmailViewModel: ObservableObject{
+    @Published var email = ""
+    @Published var password = ""
+    func signUp() {
+        guard !email.isEmpty, !password.isEmpty else {
+            print("Please enter a password or password")
+            return
+        }
+        Task {
+            do{
+                let returnedUserData = try await AuthenticationManager.shared.createUser(email: email, password: password)
+                print("Success")
+                print(returnedUserData)
+            } catch {
+                print("Error: \(error)")
+            }
+        }
+      
+    }
+    func signIn() {
+        guard !email.isEmpty, !password.isEmpty else {
+            print("Please enter a password or password")
+            return
+        }
+        Task {
+            do{
+                let returnedUserData = try await AuthenticationManager.shared.signInUser(email: email, password: password)
+                print("Success")
+                print(returnedUserData)
+            } catch {
+                print("Error: \(error)")
+            }
+        }
+      
+    }
+}
 struct LoginView: View {
-    @State private var username : String = ""
-    @State private var password : String = ""
+    @StateObject private var viewModel = SignInEmailViewModel()
     @State private var usernameValidationString : String = ""
     @State private var passwordValidationString : String = ""
     @ObservedObject var viewManager : ViewManager
@@ -23,7 +58,7 @@ struct LoginView: View {
                     Text("Username: ")
                         .foregroundColor(Color.white)
                         .font(.custom("OpenSans-SemiBold", size: 25.0))
-                    TextField("Username", text : $username).background(Color.white).frame(width: 150, height: 50).cornerRadius(25)
+                    TextField("Username", text : $viewModel.email).background(Color.white).frame(width: 150, height: 50).cornerRadius(25)
                 }
                 if(usernameValidationString != "")
                 {
@@ -33,7 +68,7 @@ struct LoginView: View {
                     Text("Password: ")
                         .foregroundColor(Color.white)
                         .font(.custom("OpenSans-SemiBold", size: 25.0)).frame(width: 140)
-                    TextField("Password", text : $password).background(Color.white).frame(width: 150, height: 50).cornerRadius(25)
+                    TextField("Password", text : $viewModel.password).background(Color.white).frame(width: 150, height: 50).cornerRadius(25)
                 }
                 if(passwordValidationString != "")
                 {
@@ -42,7 +77,10 @@ struct LoginView: View {
                 
                 Spacer()
                     .frame(height: 50.0)
-                Button("Submit"){validateUser()}
+                Button("Submit"){
+                    viewModel.signIn()
+                    viewManager.currentView="calendarView"
+                }
                     
                     .fontWeight(.bold)
                     .frame(width: 180)
@@ -70,7 +108,7 @@ struct LoginView: View {
         
     }
     private func validateUser(){
-        print("The username is \(username) and the password is \(password)")
+       
         viewManager.currentView = "calendarView"
     }
     

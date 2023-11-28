@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CreateAccountView : View{
-    @State private var username : String = ""
-    @State private var password : String = ""
+    
+    @StateObject private var viewModel = SignInEmailViewModel()
     @State private var usernameValidationString : String = ""
     @State private var passwordValidationString : String = ""
     @ObservedObject var viewManager : ViewManager
@@ -34,26 +34,29 @@ struct CreateAccountView : View{
                     Text("Username: ")
                         .foregroundColor(Color.white)
                         .font(.custom("OpenSans-SemiBold", size: 25.0))
-                    TextField("Username", text : $username).background(Color.white).frame(width: 150, height: 50).cornerRadius(25)
+                    TextField("Username", text : $viewModel.email).background(Color.white).frame(width: 150, height: 50).cornerRadius(25)
                 }
                 if(usernameValidationString != "")
                 {
-                    Text(usernameValidationString).foregroundColor(Color.red).font(.custom("OpenSans-SemiBold", size: 15.0))
+//                    Text(usernameValidationString).foregroundColor(Color.red).font(.custom("OpenSans-SemiBold", size: 15.0))
                 }
                 HStack{
                     Text("Password: ")
                         .foregroundColor(Color.white)
                         .font(.custom("OpenSans-SemiBold", size: 25.0)).frame(width: 140)
-                    TextField("Password", text : $password).background(Color.white).frame(width: 150, height: 50).cornerRadius(25)
+                    TextField("Password", text : $viewModel.password).background(Color.white).frame(width: 150, height: 50).cornerRadius(25)
                 }
                 if(passwordValidationString != "")
                 {
-                    Text(passwordValidationString).foregroundColor(Color.red).font(.custom("OpenSans-SemiBold", size: 15.0))
+//                    Text(passwordValidationString).foregroundColor(Color.red).font(.custom("OpenSans-SemiBold", size: 15.0))
                 }
                 
                 Spacer()
                     .frame(height: 50.0)
-                Button("Submit"){createAccount()}
+                Button("Submit"){
+                    viewModel.signUp()
+                    viewManager.currentView="calendarView"
+                }
                     
                     .fontWeight(.bold)
                     .frame(width: 180)

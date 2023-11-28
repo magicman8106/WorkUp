@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyA5PvoR8jtLZ_n-ChNVSeZ7-tlFR1aSNd0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>487969271226</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>uh.WorkUp</string>
+	<key>PROJECT_ID</key>
+	<string>workup-f4314</string>
+	<key>STORAGE_BUCKET</key>
+	<string>workup-f4314.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:487969271226:ios:c56cec63f7ad4c8ea88183</string>
+</dict>
+</plist>

@@ -297,6 +297,10 @@ struct CalendarView : View{
             
             
         }
+        .onAppear{
+            let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
+            viewManager.currentView = authUser == nil ? "loginView" : "calendarView"
+        }
         .background(Color("app_background"))
     }
 }

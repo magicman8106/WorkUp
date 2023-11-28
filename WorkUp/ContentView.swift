@@ -7,7 +7,7 @@
 
 import SwiftUI
 class ViewManager : ObservableObject{
-    @Published var currentView : String = "workoutView"
+    @Published var currentView : String = "calendarView"
     
 }
 
@@ -40,6 +40,14 @@ struct navBar : View {
                     Text("Calendar").padding(.top, 2.0)
                 }.onTapGesture {
                     changeView(newView : "calendarView")
+                }.frame(height: 60)
+                VStack{
+                    Spacer().frame(height: 6)
+                    Image(systemName : "person.circle").font(.system(size: 20))
+                    Spacer().frame(height: 5)
+                    Text("Prfoile").padding(.top, 2.0)
+                }.onTapGesture {
+                    changeView(newView : "settingsView")
                 }.frame(height: 60)
             }.background(Color.navBar).cornerRadius(5)
                 
@@ -74,6 +82,9 @@ struct ContentView: View {
                 } else if (viewManager.currentView == "workoutView")
                 {
                     WorkoutView(viewManager : viewManager)
+                } else if (viewManager.currentView == "settingsView")
+                {
+                    SettingsView(viewManager : viewManager)
                 } else {
                     Text("Unknown view \(viewManager.currentView)")
                 }
