@@ -56,11 +56,20 @@ final class UserManager {
     static let shared = UserManager()
     private init(){}
     private let userCollection = Firestore.firestore().collection("users")
+    private var trackedMealDayListener : ListenerRegistration? = nil
+    
+    
     private func userDocument(userId : String) -> DocumentReference {
         userCollection.document(userId)
         
     }
     
+    private func trackedMealDayCollection(userId: String) -> CollectionReference {
+        userDocument(userId: userId).collection("tracked_meal_days")
+    }
+    private func mealDayDocument(mealDayId: String, userId: String) -> DocumentReference {
+        trackedMealDayCollection(userId: userId).document(mealDayId)
+    }
     private let encoder : Firestore.Encoder = {
         let encoder = Firestore.Encoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
@@ -92,8 +101,8 @@ final class UserManager {
         return try await userDocument(userId: userId).getDocument(as: DBUser.self, decoder: decoder)
         
     }
-    func addMealDay(userId: String, newMealDay: mealDocument , newMealDate : Date) async throws{
-        let document = userDocument(userId: userId).collection("dailyMeals").document()
+    func addMealDay(userId: String, newMealDay: mealDay , newMealDate : Date) async throws{
+        let document = trackedMealDayCollection(userId: userId).document()
         let documentId = document.documentID
         let data : [String: Any] = [
             "date" : newMealDay.mealDay,
@@ -102,5 +111,51 @@ final class UserManager {
         ]
         try await document.setData(data, merge: false)
     }
+    func editMealDay(userId: String, updatedMealDay : mealDay) async throws{
+        let data : [String: Any] = [
+            "date" : updatedMealDay.mealDay,
+            "meals"  : updatedMealDay.mealList,
+            "day_id" : updatedMealDay
+        ]
+        try await mealDayDocument(mealDayId: updatedMealDay.dayId, userId: userId).setData(data, merge: true)
+    }
+    func getAllTrackedMealDays(userId : String) async throws -> [mealDay]{
+        let snapShot = try await trackedMealDayCollection(userId: userId).getDocuments()
+        var mealDays: [mealDay] = []
+        for document in snapShot.documents {
+            let mealDay = try document.data(as: mealDay.self)
+            mealDays.append(mealDay)
+        }
+        return mealDays
+    }
+//    func addListenerForTrackedMealDays(userId: String, completion: @escaping (_ days: [mealDay]) -> Void) {
+//        self.trackedMealDayListener = trackedMealDayCollection(userId: userId).addSnapshotListener({querySnapshot, error in
+//            guard let documents = querySnapshot?.documents else{
+//                print("No tracked meal days")
+//                return
+//            }
+//            let trackedMealDays : [mealDay] = documents.compactMap({try? $0.data(as: mealDay.self)  })
+//            completion(trackedMealDays)
+//            
+//            querySnapshot?.documentChanges.forEach{ diff in
+//                if(diff.type == .added){
+//                    print("New tracked days \(diff.document.data())")
+//                }
+//                if(diff.type == .modified){
+//                    print("modified day \(diff.document.data())")
+//                }
+//                if(diff.type == .removed){
+//                    print("removed day \(diff.document.data())")
+//                }
+//            }
+//            
+//        })
+//    }
+//    func addListenerForTrackedMealDays(userId: String) -> AnyPublisher<[mealDay], Error>{
+//        let (publisher, listener) = trackedMealDayCollection(userId: userId).addSnapshotListener(as: mealDay)
+//        self.trackedMealDayListener = listener
+//        return publisher
+//    }
 
 }
+
