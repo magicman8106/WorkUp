@@ -10,8 +10,10 @@ import SwiftUI
 final class ProfileViewModel : ObservableObject{
     @Published private (set) var user: DBUser? = nil
     func loadCurrentUser() async throws {
+        print("running vm get func")
         let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
         self.user = try await UserManager.shared.getUser(userId: authDataResult.uid)
+        print(user?.email ?? "none")
     }
 }
 struct ProfileView: View{
@@ -32,7 +34,12 @@ struct ProfileView: View{
                 }
             }
             .task{
-               try? await viewModel.loadCurrentUser()
+                do{
+                    try await viewModel.loadCurrentUser()
+                }
+                catch{
+                    print("error \(error)")
+                }
             }
             .navigationTitle("Profile").toolbar{
                 

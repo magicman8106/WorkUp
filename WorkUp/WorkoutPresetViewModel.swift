@@ -10,11 +10,16 @@ import SwiftUI
 import Combine
 import SwiftUI
 struct Exercise : Codable {
-    let name : String
-    let reps : Int
-    let sets : Int
-    let pr : Int
-    
+    var name : String
+    var reps : Int
+    var sets : Int
+    var pr : Int
+    init(name: String, reps : Int, sets : Int, pr : Int){
+        self.name = name
+        self.reps = reps
+        self.sets = sets
+        self.pr = pr
+    }
     enum CodingKeys : String, CodingKey {
         case name = "name"
         case reps = "reps"
@@ -38,9 +43,15 @@ struct Exercise : Codable {
     }
 }
 struct Workout : Codable {
-    let title : String
-    let workoutId : String
-    let exerciseList : [Exercise]
+    var title : String
+    var workoutId : String
+    var exerciseList : [Exercise]
+    init(title : String, workoutId : String, exerciseList : [Exercise])
+    {
+        self.title = title
+        self.workoutId = workoutId
+        self.exerciseList = exerciseList
+    }
     enum CodingKeys : String, CodingKey {
         case title = "title"
         case workoutId = "workout_id"
@@ -75,11 +86,11 @@ final class WorkoutPresetViewModel : ObservableObject {
             }
         }
     }
-    func updateWorkoutPresets(updatedWorkutPresets : Workout) async throws {
+    func updateWorkoutPresets(updatedWorkoutPreset : Workout) async throws {
         Task{
             do{
                 let authDataResults = try AuthenticationManager.shared.getAuthenticatedUser()
-                try await UserManager.shared.updateWorkoutPresets(userId: authDataResults.uid, updatedWorkoutPreset: updatedWorkutPresets)
+                try await UserManager.shared.updateWorkoutPresets(userId: authDataResults.uid, updatedWorkoutPreset: updatedWorkoutPreset)
             } catch{
                 print("error \(error)")
             }

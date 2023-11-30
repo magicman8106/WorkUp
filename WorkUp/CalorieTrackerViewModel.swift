@@ -12,7 +12,10 @@ import SwiftUI
 struct Item : Codable {
     let name : String
     let calories : Int
-    
+    init(name : String, calories: Int) {
+        self.name = name
+        self.calories = calories
+    }
     enum CodingKeys : String, CodingKey {
         case name = "name"
         case calories = "calories"
@@ -33,6 +36,11 @@ struct Item : Codable {
 struct Meal : Codable {
     let mealTitle : String
     let itemList : [Item]
+    init(mealTitle : String, itemList : [Item])
+    {
+        self.mealTitle = mealTitle
+        self.itemList = itemList
+    }
     enum CodingKeys : String, CodingKey {
         case mealTitle  = "meal_title"
         case itemList = "item_list"
@@ -52,23 +60,28 @@ struct Meal : Codable {
 struct mealDay : Codable {
     let dayId : String
     let mealList : [Meal]
-    let mealDay : Date
+    let mealDate : Date
+    init(dayId : String, mealList : [Meal], mealDate : Date){
+        self.dayId = dayId
+        self.mealList =  mealList
+        self.mealDate = mealDate
+    }
     enum CodingKeys : String, CodingKey {
         case dayId = "day_id"
         case mealList = "meal_list"
-        case mealDay = "meal_day"
+        case mealDate = "meal_date"
     }
     init(from decoder : Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.dayId = try container.decode(String.self, forKey: .dayId)
         self.mealList = try container.decode([Meal].self, forKey: .mealList)
-        self.mealDay = try container.decode(Date.self, forKey: .mealDay)
+        self.mealDate = try container.decode(Date.self, forKey: .mealDate)
     }
     func encode(to encoder : Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(self.dayId, forKey: .dayId)
         try container.encode(self.mealList, forKey: .mealList)
-        try container.encode(self.mealDay, forKey: .mealDay)
+        try container.encode(self.mealDate, forKey: .mealDate)
     }
 
     
