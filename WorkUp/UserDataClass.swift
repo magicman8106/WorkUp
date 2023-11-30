@@ -8,16 +8,33 @@
 import SwiftUI
 class UserData : ObservableObject {
     @Published var muscleGroups : [String]
+    @Published var months : [String]
     @Published var workoutNames : [String: [String]]
+    @Published var monthsOfYear : [String: [String]]
     @Published var events : [Event] = []
    
     init(){
         self.muscleGroups = ["Arms", "Chest", "Legs", "Core"]
+        self.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         self.workoutNames = [
             "Arms" : ["Preacher Curl", "Hammer Curl", "Tricep Extention"],
             "Chest" : ["Bench Press", "Incline Press", "Cable Crossover"],
             "Legs" : ["Calf Raises", "Leg Press", "Deadift"],
             "Core" : ["Crunch", "Leg Raise", "Plank", "Situps"]
+        ]
+        self.monthsOfYear = [
+            "Jan" : ["test1", "test2"],
+            "Feb" : ["test3", "test4"],
+            "Mar" : [],
+            "Apr" : [],
+            "May" : [],
+            "Jun" : [],
+            "Jul" : [],
+            "Aug" : [],
+            "Sep" : [],
+            "Oct" : [],
+            "Nov" : ["nov test", "nov test2"],
+            "Dec" : ["dec1", "dec2"]
         ]
         let currentDate = Date()
         let calendar = Calendar.current

@@ -34,6 +34,8 @@
 		9ADDFAE22B189A12008B9E7B /* CalorieTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDFAE12B189A12008B9E7B /* CalorieTrackerViewModel.swift */; };
 		9ADDFAE42B189B3E008B9E7B /* WorkoutPresetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDFAE32B189B3E008B9E7B /* WorkoutPresetViewModel.swift */; };
 		9ADDFAE62B18A877008B9E7B /* WorkoutTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDFAE52B18A877008B9E7B /* WorkoutTrackerViewModel.swift */; };
+		9ADDFAE82B1919FB008B9E7B /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDFAE72B1919FB008B9E7B /* AddMealView.swift */; };
+		9ADDFAEA2B191A1D008B9E7B /* CalorieTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDFAE92B191A1D008B9E7B /* CalorieTrackerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		9ADDFAE12B189A12008B9E7B /* CalorieTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieTrackerViewModel.swift; sourceTree = "<group>"; };
 		9ADDFAE32B189B3E008B9E7B /* WorkoutPresetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPresetViewModel.swift; sourceTree = "<group>"; };
 		9ADDFAE52B18A877008B9E7B /* WorkoutTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTrackerViewModel.swift; sourceTree = "<group>"; };
+		9ADDFAE72B1919FB008B9E7B /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
+		9ADDFAE92B191A1D008B9E7B /* CalorieTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieTrackerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,8 @@
 				9ADDFAE12B189A12008B9E7B /* CalorieTrackerViewModel.swift */,
 				9ADDFAE32B189B3E008B9E7B /* WorkoutPresetViewModel.swift */,
 				9ADDFAE52B18A877008B9E7B /* WorkoutTrackerViewModel.swift */,
+				9ADDFAE72B1919FB008B9E7B /* AddMealView.swift */,
+				9ADDFAE92B191A1D008B9E7B /* CalorieTrackerView.swift */,
 			);
 			path = WorkUp;
 			sourceTree = "<group>";
@@ -360,11 +366,13 @@
 				9A9170512AF0F231007BC106 /* ContentView.swift in Sources */,
 				9AA8C9F62AF188BE00CC4948 /* CreateAccountView.swift in Sources */,
 				9A4CFB182AF36FE100EC29DB /* UserDataClass.swift in Sources */,
+				9ADDFAEA2B191A1D008B9E7B /* CalorieTrackerView.swift in Sources */,
 				9A4CFB162AF353FA00EC29DB /* WorkoutView.swift in Sources */,
 				9ADDFADA2B183431008B9E7B /* CalendarManager.swift in Sources */,
 				9ADDFAD82B16E248008B9E7B /* UserManager.swift in Sources */,
 				9A91704F2AF0F231007BC106 /* WorkUpApp.swift in Sources */,
 				9ADDFAE22B189A12008B9E7B /* CalorieTrackerViewModel.swift in Sources */,
+				9ADDFAE82B1919FB008B9E7B /* AddMealView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

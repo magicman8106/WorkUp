@@ -34,6 +34,13 @@ struct navBar : View {
                     changeView(newView : "workoutView")
                 }.frame(height: 60)
                 VStack{
+                    Image(systemName : "figure.strengthtraining.traditional").font(.system(size: 20))
+                    Spacer().frame(height: 5)
+                    Text("Calories")
+                }.onTapGesture {
+                    changeView(newView : "CalTrackerView")
+                }.frame(height: 60)
+                VStack{
                     Spacer().frame(height: 6)
                     Image(systemName : "calendar").font(.system(size: 20))
                     Spacer().frame(height: 5)
@@ -87,10 +94,11 @@ struct ContentView: View {
                     {
                         ProfileView(viewManager:viewManager)
                        
+                    } else if(viewManager.currentView == "CalTrackerView"){
+                        CalTrackerView(viewManager: viewManager)
                     }else {
                         Text("Unknown view \(viewManager.currentView)")
                     }
-                    
                 }
                 if(viewManager.currentView != "loginView" && viewManager.currentView != "createAccountView")
                 {

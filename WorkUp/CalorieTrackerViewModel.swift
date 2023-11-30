@@ -33,6 +33,7 @@ struct Item : Codable {
 
     
 }
+
 struct Meal : Codable {
     let mealTitle : String
     let itemList : [Item]
@@ -102,6 +103,14 @@ final class CalorieTrackerViewModel : ObservableObject {
                 print("error \(error)")
             }
             
+        }
+    }
+    func addTrackedMeal(newMeal : mealDay) async throws{
+        Task{
+            do{
+                let authData = try AuthenticationManager.shared.getAuthenticatedUser()
+                try await UserManager.shared.addMealDay(userId: authData.uid, newMealDay: newMeal, newMealDate: newMeal.mealDate)
+            }
         }
     }
     func updateTrackedMeals(updatedMealDay:mealDay) async throws{
