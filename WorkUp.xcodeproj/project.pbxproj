@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9A4CFB162AF353FA00EC29DB /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CFB152AF353FA00EC29DB /* WorkoutView.swift */; };
 		9A4CFB182AF36FE100EC29DB /* UserDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CFB172AF36FE100EC29DB /* UserDataClass.swift */; };
+		9A5A569E2B194229000053C6 /* WorkoutCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5A569D2B194229000053C6 /* WorkoutCellView.swift */; };
+		9A5A56A22B1947BE000053C6 /* WorkoutCellViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5A56A12B1947BE000053C6 /* WorkoutCellViewBuilder.swift */; };
 		9A83A1662B12AAB800D703F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A83A1652B12AAB800D703F3 /* GoogleService-Info.plist */; };
 		9A83A1692B12ABFF00D703F3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9A83A1682B12ABFF00D703F3 /* FirebaseAnalytics */; };
 		9A83A16B2B12BB9600D703F3 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9A83A16A2B12BB9500D703F3 /* FirebaseAnalyticsSwift */; };
@@ -58,6 +60,8 @@
 /* Begin PBXFileReference section */
 		9A4CFB152AF353FA00EC29DB /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		9A4CFB172AF36FE100EC29DB /* UserDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataClass.swift; sourceTree = "<group>"; };
+		9A5A569D2B194229000053C6 /* WorkoutCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCellView.swift; sourceTree = "<group>"; };
+		9A5A56A12B1947BE000053C6 /* WorkoutCellViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCellViewBuilder.swift; sourceTree = "<group>"; };
 		9A83A1652B12AAB800D703F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9A91704B2AF0F231007BC106 /* WorkUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A91704E2AF0F231007BC106 /* WorkUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkUpApp.swift; sourceTree = "<group>"; };
@@ -116,6 +120,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A5A569C2B194210000053C6 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				9A5A569D2B194229000053C6 /* WorkoutCellView.swift */,
+				9A5A56A12B1947BE000053C6 /* WorkoutCellViewBuilder.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		9A9170422AF0F231007BC106 = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +154,7 @@
 		9A91704D2AF0F231007BC106 /* WorkUp */ = {
 			isa = PBXGroup;
 			children = (
+				9A5A569C2B194210000053C6 /* Subviews */,
 				9ADDFAD62B16E22A008B9E7B /* Firestore */,
 				9ADDFAD32B16C29F008B9E7B /* Profile */,
 				9A91707F2AF0F94A007BC106 /* openSans.ttf */,
@@ -356,6 +370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A5A569E2B194229000053C6 /* WorkoutCellView.swift in Sources */,
 				9ADDFAE62B18A877008B9E7B /* WorkoutTrackerViewModel.swift in Sources */,
 				9AA8CA012AF1DAD400CC4948 /* CalendarView.swift in Sources */,
 				9ADDFAE42B189B3E008B9E7B /* WorkoutPresetViewModel.swift in Sources */,
@@ -363,6 +378,7 @@
 				9ADDFAD52B16C2C6008B9E7B /* ProfileView.swift in Sources */,
 				9A9170792AF0F531007BC106 /* LoginView.swift in Sources */,
 				9ADDFACE2B13E2CC008B9E7B /* SettingsView.swift in Sources */,
+				9A5A56A22B1947BE000053C6 /* WorkoutCellViewBuilder.swift in Sources */,
 				9A9170512AF0F231007BC106 /* ContentView.swift in Sources */,
 				9AA8C9F62AF188BE00CC4948 /* CreateAccountView.swift in Sources */,
 				9A4CFB182AF36FE100EC29DB /* UserDataClass.swift in Sources */,

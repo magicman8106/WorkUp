@@ -7,25 +7,25 @@
 
 import SwiftUI
 struct workoutView : View {
-    @Binding var workout : Workout
+    @State var workout : String
     @EnvironmentObject var userData : UserData
     @StateObject var viewModel  = WorkoutPresetViewModel()
     var body : some View
     {
         VStack{
-           // Text("\(showingGroupName)")
+           Text("\(workout)")
             Spacer().frame(height: 20)
-//            ScrollView{
-//                ForEach(viewModel.workoutPresets ?? [], id: \.self){
+            ScrollView{
+//                ForEach($userData.workoutNames[workout] ?? [], id: \.self){
 //                    value in
 //                    HStack{
-//                        Text(value.title).font(.custom("OpenSans-SemiBold", size: 20.0)).foregroundColor(.black).frame(width: 180)
+//                        Text(value).font(.custom("OpenSans-SemiBold", size: 20.0)).foregroundColor(.black).frame(width: 180)
 //                    }
 //                    
 //                    
 //                    
 //                }
-//            }
+            }
             
             Button("Create new"){print("Create New")}
                 .fontWeight(.bold)
@@ -62,20 +62,25 @@ struct WorkoutView : View{
             Text("Workout Presets").foregroundColor(Color.white)
                 .font(.custom("OpenSans-Bold", size: 30.0))
             VStack{
+                List{
+                    ForEach(viewModel.workoutPresets, id:\.workoutId) {
+                        workout in
+                        WorkoutCollapsedCellView(workout: workout)
+                    }
+                }
                 
                 
-                Spacer().frame(height: 20)
+//                Spacer().frame(height: 20)
 //                ScrollView{
 //                   
-//                    ForEach(viewModel.workoutPresets id: \.self){
+//                    ForEach(userData.muscleGroups, id: \.self){
 //                        group in
-//                        if (selectedMuscleGroupId == group.workoutId)
-//                        {
-//                            workoutView(showingGroupName: selectedMuscleGroupId)
-//                        } else {
+//                        if selectedMuscleGroupId == group {
+//                            workoutView(workout: $group)
+//                            }  else {
 //                            Button(action: {selectedMuscleGroupId = group.workoutId}){
 //                               
-//                                    Text(group).font(.custom("OpenSans-SemiBold", size: 20.0)).foregroundColor(.black)
+//                                Text(group.title).font(.custom("OpenSans-SemiBold", size: 20.0)).foregroundColor(.black)
 //                                   
 //                                
 //                            }

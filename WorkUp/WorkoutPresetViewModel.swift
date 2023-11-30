@@ -73,7 +73,7 @@ struct Workout : Codable {
 
 @MainActor
 final class WorkoutPresetViewModel : ObservableObject {
-    @Published private(set) var workoutPresets : [Workout] = []
+    @Published var workoutPresets : [Workout] = []
     
     func getWorkoutPresets(){
         Task{

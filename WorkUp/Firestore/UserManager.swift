@@ -175,6 +175,8 @@ final class UserManager {
         }
         return mealDays
     }
+    
+    
     func addWorkoutPreset(userId: String, newWorkoutPreset : Workout) async throws {
         let document = workoutPresetsCollection(userId: userId).document()
         let preparedWorkout : Workout = Workout(title: newWorkoutPreset.title, workoutId: document.documentID, exerciseList: newWorkoutPreset.exerciseList)
@@ -198,7 +200,9 @@ final class UserManager {
         }
         return workouts
     }
-    
+    func getWorkoutPreset(userId: String, workoutId : String) async throws -> Workout{
+        try await workoutPresetDocument(workoutId: workoutId, userId: userId).getDocument(as: Workout.self)
+    }
     func addTrackedWorkout(userId: String, newTrackedWorkout : TrackedWorkout) async throws {
         let document = trackedWorkoutCollection(userId: userId).document()
         let preparedTrackedWorkout = Workout(title: newTrackedWorkout.title, workoutId: document.documentID, exerciseList: newTrackedWorkout.exerciseList)
