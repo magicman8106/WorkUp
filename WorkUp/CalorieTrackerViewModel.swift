@@ -1,9 +1,10 @@
 //
-//  CalorieTrackmerViewModel.swift
+//  CalorieTrackerViewModel.swift
 //  WorkUp
 //
 //  Created by Elijah Ochoa on 11/30/23.
 //
+
 import Foundation
 import SwiftUI
 import Combine
@@ -26,10 +27,7 @@ struct Item : Codable {
         try container.encode(self.name, forKey: .name)
         try container.encode(self.calories, forKey: .calories)
     }
-//    init(calories : Int, name : String )  {
-//        self.calories =  calories
-//        self.name = name
-//    }
+
     
 }
 struct Meal : Codable {
@@ -49,10 +47,7 @@ struct Meal : Codable {
         try container.encode(self.mealTitle, forKey: .mealTitle)
         try container.encode(self.itemList, forKey: .itemList)
     }
-//    init (itemList : [Item], mealTitle :String) {
-//        self.itemList = itemList
-//        self.mealTitle = mealTitle
-//    }
+
 }
 struct mealDay : Codable {
     let dayId : String
@@ -75,10 +70,7 @@ struct mealDay : Codable {
         try container.encode(self.mealList, forKey: .mealList)
         try container.encode(self.mealDay, forKey: .mealDay)
     }
-//    init(mealList : [Meal], mealDay: Date, mealListId: String){
-//        self.mealList = mealList
-//        self.mealDay = mealDay
-//    }
+
     
 }
 
@@ -86,7 +78,7 @@ struct mealDay : Codable {
 @MainActor
 final class CalorieTrackerViewModel : ObservableObject {
     @Published private(set) var trackedDays : [mealDay] = []
-    private var cancellables = Set<AnyCancellable>()
+    //private var cancellables = Set<AnyCancellable>()
     
     func getTrackedMealDays() {
         Task{
@@ -108,19 +100,7 @@ final class CalorieTrackerViewModel : ObservableObject {
             }
         }
     }
-    //    func addListenerForTrackedMealDays(){
-    //        guard let authDataResult = try? AuthenticationManager.shared.getAuthenticatedUser() else {return}
-    //
-    //        UserManager.shared.addListenerForTrackedMealDays(userId: authDataResult.uid)
-    //            .sink{ completion in
-    //
-    //            } receiveValue : { [weak self] days in
-    //                self?.trackedDays = days
-    //            }
-    //            .store(in: &cancellables)
-    //
-    //        }
-    //    }
+   
     
     
 }

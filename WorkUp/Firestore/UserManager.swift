@@ -70,6 +70,13 @@ final class UserManager {
     private func mealDayDocument(mealDayId: String, userId: String) -> DocumentReference {
         trackedMealDayCollection(userId: userId).document(mealDayId)
     }
+    
+    private func workoutPresetsCollection(userId : String) -> CollectionReference {
+        userDocument(userId: userId).collection("workout_presets")
+    }
+    private func workoutPresetDocument(workoutId : String, userId: String) -> DocumentReference {
+        workoutPresetsCollection(userId: userId).document(workoutId)
+    }
     private let encoder : Firestore.Encoder = {
         let encoder = Firestore.Encoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
@@ -115,7 +122,7 @@ final class UserManager {
         let data : [String: Any] = [
             "date" : updatedMealDay.mealDay,
             "meals"  : updatedMealDay.mealList,
-            "day_id" : updatedMealDay
+            "day_id" : updatedMealDay.dayId
         ]
         try await mealDayDocument(mealDayId: updatedMealDay.dayId, userId: userId).setData(data, merge: true)
     }
@@ -128,6 +135,32 @@ final class UserManager {
         }
         return mealDays
     }
+    func addWorkoutPreset(userId: String, newWorkoutPreset : Workout) async throws {
+        let data : [String : Any] = [
+            "title" : newWorkoutPreset.title,
+            "workout_id" : newWorkoutPreset.workoutId,
+            "exercise_list" : newWorkoutPreset.exerciseList
+        ]
+        try await mealDayDocument(mealDayId: newWorkoutPreset.workoutId, userId: userId).setData(data, merge: false)
+    }
+    func updateWorkoutPresets(userId : String, updatedWorkoutPreset : Workout) async throws {
+        let data : [String : Any] = [
+            "title" : updatedWorkoutPreset.title,
+            "workout_id" : updatedWorkoutPreset.workoutId,
+            "exercise_list" : updatedWorkoutPreset.exerciseList
+        ]
+        try await mealDayDocument(mealDayId: updatedWorkoutPreset.workoutId, userId: userId).setData(data, merge: true)
+    }
+    func getAllWorkoutPresets(userId : String) async throws -> [Workout]{
+        let snapShot = try await workoutPresetsCollection(userId: userId).getDocuments()
+        var workouts : [Workout] = []
+        for document in snapShot.documents {
+            let workout = try document.data(as: Workout.self)
+            workouts.append(workout)
+        }
+        return workouts
+    }
+    
 //    func addListenerForTrackedMealDays(userId: String, completion: @escaping (_ days: [mealDay]) -> Void) {
 //        self.trackedMealDayListener = trackedMealDayCollection(userId: userId).addSnapshotListener({querySnapshot, error in
 //            guard let documents = querySnapshot?.documents else{
