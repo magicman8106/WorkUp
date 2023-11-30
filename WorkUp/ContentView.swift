@@ -7,7 +7,7 @@
 
 import SwiftUI
 class ViewManager : ObservableObject{
-    @Published var currentView : String = "calendarView"
+    @Published var currentView : String = "profileView"
     
 }
 
@@ -45,9 +45,9 @@ struct navBar : View {
                     Spacer().frame(height: 6)
                     Image(systemName : "person.circle").font(.system(size: 20))
                     Spacer().frame(height: 5)
-                    Text("Prfoile").padding(.top, 2.0)
+                    Text("Profile").padding(.top, 2.0)
                 }.onTapGesture {
-                    changeView(newView : "settingsView")
+                    changeView(newView : "profileView")
                 }.frame(height: 60)
             }.background(Color.navBar).cornerRadius(5)
                 
@@ -70,26 +70,29 @@ struct ContentView: View {
     var body: some View {
         
             ZStack{
-                if(viewManager.currentView == "loginView")
-                {
-                    LoginView(viewManager: viewManager)
-                } else if (viewManager.currentView == "createAccountView")
-                {
-                    CreateAccountView(viewManager : viewManager)
-                } else if(viewManager.currentView == "calendarView")
-                {
-                    CalendarView(viewManager : viewManager)
-                } else if (viewManager.currentView == "workoutView")
-                {
-                    WorkoutView(viewManager : viewManager)
-                } else if (viewManager.currentView == "settingsView")
-                {
-                    SettingsView(viewManager : viewManager)
-                } else {
-                    Text("Unknown view \(viewManager.currentView)")
+                NavigationStack{
+                    if(viewManager.currentView == "loginView")
+                    {
+                        LoginView(viewManager: viewManager)
+                    } else if (viewManager.currentView == "createAccountView")
+                    {
+                        CreateAccountView(viewManager : viewManager)
+                    } else if(viewManager.currentView == "calendarView")
+                    {
+                        CalendarView(viewManager : viewManager)
+                    } else if (viewManager.currentView == "workoutView")
+                    {
+                        WorkoutView(viewManager : viewManager)
+                    } else if(viewManager.currentView == "profileView")
+                    {
+                        ProfileView(viewManager:viewManager)
+                       
+                    }else {
+                        Text("Unknown view \(viewManager.currentView)")
+                    }
+                    
                 }
-               
-                if(viewManager.currentView != "loginView")
+                if(viewManager.currentView != "loginView" && viewManager.currentView != "createAccountView")
                 {
                    
                     VStack{
@@ -100,7 +103,9 @@ struct ContentView: View {
                     
                     
                 }
-            }
+        }
+             
+                
         
 //        ZStack{
 //            WorkoutView(viewManager : viewManager)

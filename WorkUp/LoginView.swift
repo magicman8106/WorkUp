@@ -11,9 +11,12 @@ final class SignInEmailViewModel: ObservableObject{
         }
         Task {
             do{
-                let returnedUserData = try await AuthenticationManager.shared.createUser(email: email, password: password)
+                let authResult = try await AuthenticationManager.shared.createUser(email: email, password: password)
+                let user = DBUser(auth: authResult)
+                try await UserManager.shared.createNewUser(user: user)
+                //try await UserManager.shared.createNewUser(auth: returnedUserData)
                 print("Success")
-                print(returnedUserData)
+                print(authResult)
             } catch {
                 print("Error: \(error)")
             }
@@ -28,6 +31,8 @@ final class SignInEmailViewModel: ObservableObject{
         Task {
             do{
                 let returnedUserData = try await AuthenticationManager.shared.signInUser(email: email, password: password)
+               
+                
                 print("Success")
                 print(returnedUserData)
             } catch {

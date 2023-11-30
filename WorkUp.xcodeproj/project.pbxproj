@@ -26,6 +26,12 @@
 		9ADDFAC82B12EAF5008B9E7B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9ADDFAC72B12EAF5008B9E7B /* FirebaseAuth */; };
 		9ADDFACA2B12ED16008B9E7B /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDFAC92B12ED16008B9E7B /* AuthenticationManager.swift */; };
 		9ADDFACE2B13E2CC008B9E7B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDFACD2B13E2CC008B9E7B /* SettingsView.swift */; };
+		9ADDFAD02B16C0E7008B9E7B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9ADDFACF2B16C0E6008B9E7B /* FirebaseFirestore */; };
+		9ADDFAD22B16C0E7008B9E7B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9ADDFAD12B16C0E7008B9E7B /* FirebaseFirestoreSwift */; };
+		9ADDFAD52B16C2C6008B9E7B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDFAD42B16C2C6008B9E7B /* ProfileView.swift */; };
+		9ADDFAD82B16E248008B9E7B /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDFAD72B16E248008B9E7B /* UserManager.swift */; };
+		9ADDFADA2B183431008B9E7B /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDFAD92B183431008B9E7B /* CalendarManager.swift */; };
+		9ADDFADC2B18407A008B9E7B /* MealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADDFADB2B18407A008B9E7B /* MealViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +71,10 @@
 		9AA8C9FE2AF1965200CC4948 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		9ADDFAC92B12ED16008B9E7B /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		9ADDFACD2B13E2CC008B9E7B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9ADDFAD42B16C2C6008B9E7B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		9ADDFAD72B16E248008B9E7B /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		9ADDFAD92B183431008B9E7B /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		9ADDFADB2B18407A008B9E7B /* MealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +85,9 @@
 				9A83A16B2B12BB9600D703F3 /* FirebaseAnalyticsSwift in Frameworks */,
 				9A83A1692B12ABFF00D703F3 /* FirebaseAnalytics in Frameworks */,
 				9AA8C9FB2AF194D500CC4948 /* FSCalendar in Frameworks */,
+				9ADDFAD02B16C0E7008B9E7B /* FirebaseFirestore in Frameworks */,
 				9ADDFAC82B12EAF5008B9E7B /* FirebaseAuth in Frameworks */,
+				9ADDFAD22B16C0E7008B9E7B /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +133,8 @@
 		9A91704D2AF0F231007BC106 /* WorkUp */ = {
 			isa = PBXGroup;
 			children = (
+				9ADDFAD62B16E22A008B9E7B /* Firestore */,
+				9ADDFAD32B16C29F008B9E7B /* Profile */,
 				9A91707F2AF0F94A007BC106 /* openSans.ttf */,
 				9A91704E2AF0F231007BC106 /* WorkUpApp.swift */,
 				9A9170502AF0F231007BC106 /* ContentView.swift */,
@@ -133,6 +147,8 @@
 				9A4CFB152AF353FA00EC29DB /* WorkoutView.swift */,
 				9A4CFB172AF36FE100EC29DB /* UserDataClass.swift */,
 				9ADDFACD2B13E2CC008B9E7B /* SettingsView.swift */,
+				9ADDFAD92B183431008B9E7B /* CalendarManager.swift */,
+				9ADDFADB2B18407A008B9E7B /* MealViewModel.swift */,
 			);
 			path = WorkUp;
 			sourceTree = "<group>";
@@ -169,6 +185,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9ADDFAD32B16C29F008B9E7B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				9ADDFAD42B16C2C6008B9E7B /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		9ADDFAD62B16E22A008B9E7B /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				9ADDFAD72B16E248008B9E7B /* UserManager.swift */,
+			);
+			path = Firestore;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -190,6 +222,8 @@
 				9A83A1682B12ABFF00D703F3 /* FirebaseAnalytics */,
 				9A83A16A2B12BB9500D703F3 /* FirebaseAnalyticsSwift */,
 				9ADDFAC72B12EAF5008B9E7B /* FirebaseAuth */,
+				9ADDFACF2B16C0E6008B9E7B /* FirebaseFirestore */,
+				9ADDFAD12B16C0E7008B9E7B /* FirebaseFirestoreSwift */,
 			);
 			productName = WorkUp;
 			productReference = 9A91704B2AF0F231007BC106 /* WorkUp.app */;
@@ -312,12 +346,16 @@
 			files = (
 				9AA8CA012AF1DAD400CC4948 /* CalendarView.swift in Sources */,
 				9ADDFACA2B12ED16008B9E7B /* AuthenticationManager.swift in Sources */,
+				9ADDFADC2B18407A008B9E7B /* MealViewModel.swift in Sources */,
+				9ADDFAD52B16C2C6008B9E7B /* ProfileView.swift in Sources */,
 				9A9170792AF0F531007BC106 /* LoginView.swift in Sources */,
 				9ADDFACE2B13E2CC008B9E7B /* SettingsView.swift in Sources */,
 				9A9170512AF0F231007BC106 /* ContentView.swift in Sources */,
 				9AA8C9F62AF188BE00CC4948 /* CreateAccountView.swift in Sources */,
 				9A4CFB182AF36FE100EC29DB /* UserDataClass.swift in Sources */,
 				9A4CFB162AF353FA00EC29DB /* WorkoutView.swift in Sources */,
+				9ADDFADA2B183431008B9E7B /* CalendarManager.swift in Sources */,
+				9ADDFAD82B16E248008B9E7B /* UserManager.swift in Sources */,
 				9A91704F2AF0F231007BC106 /* WorkUpApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -684,6 +722,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9A83A1672B12ABFF00D703F3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		9ADDFACF2B16C0E6008B9E7B /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A83A1672B12ABFF00D703F3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		9ADDFAD12B16C0E7008B9E7B /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A83A1672B12ABFF00D703F3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
