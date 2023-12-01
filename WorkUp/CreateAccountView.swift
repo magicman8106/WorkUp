@@ -12,7 +12,6 @@ struct CreateAccountView : View{
     @StateObject private var viewModel = SignInEmailViewModel()
     @State private var usernameValidationString : String = ""
     @State private var passwordValidationString : String = ""
-    @ObservedObject var viewManager : ViewManager
     var body : some View {
         VStack {
            
@@ -55,7 +54,7 @@ struct CreateAccountView : View{
                     .frame(height: 50.0)
                 Button("Submit"){
                     viewModel.signUp()
-                    viewManager.currentView="calendarView"
+                   
                 }
                     
                     .fontWeight(.bold)
@@ -80,10 +79,9 @@ struct CreateAccountView : View{
     private func createAccount()
     {
         print("Account created")
-        viewManager.currentView = "calendarView"
     }
 }
 #Preview {
-    ContentView()
+    RootView()
 }
 

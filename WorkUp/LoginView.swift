@@ -46,7 +46,7 @@ struct LoginView: View {
     @StateObject private var viewModel = SignInEmailViewModel()
     @State private var usernameValidationString : String = ""
     @State private var passwordValidationString : String = ""
-    @ObservedObject var viewManager : ViewManager
+    @Binding var showSignInView :Bool
     var body: some View {
         VStack {
            
@@ -84,7 +84,7 @@ struct LoginView: View {
                     .frame(height: 50.0)
                 Button("Submit"){
                     viewModel.signIn()
-                    viewManager.currentView="calendarView"
+                    showSignInView = false
                 }
                     
                     .fontWeight(.bold)
@@ -94,12 +94,12 @@ struct LoginView: View {
                     .background(Color.white)
                     .cornerRadius(20)
                 Spacer().frame(height :20.0)
-                Button("Create Account"){viewManager.currentView = "createAccountView"}.fontWeight(.bold)
-                    .frame(width: 220)
-                    .foregroundColor(Color.black)
-                    .font(.custom("OpenSans-SemiBold", size: 25.0))
-                    .background(Color.white)
-                    .cornerRadius(20)
+//                Button("Create Account"){viewManager.currentView = "createAccountView"}.fontWeight(.bold)
+//                    .frame(width: 220)
+//                    .foregroundColor(Color.black)
+//                    .font(.custom("OpenSans-SemiBold", size: 25.0))
+//                    .background(Color.white)
+//                    .cornerRadius(20)
               
             }
             .frame(width: 350, height: 320)
@@ -112,12 +112,9 @@ struct LoginView: View {
         .background(Color("app_background"))
         
     }
-    private func validateUser(){
-       
-        viewManager.currentView = "calendarView"
-    }
+   
     
 }
 #Preview {
-    ContentView()
+    RootView()
 }

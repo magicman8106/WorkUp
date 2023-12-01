@@ -35,7 +35,7 @@ struct dayMealsView : View {
 
 struct CalTrackerView : View{
     
-    @ObservedObject var viewManager : ViewManager
+//    @ObservedObject var viewManager : ViewManager
     @EnvironmentObject var userData : UserData
     @State var monthToShow : String = ""
     
@@ -99,5 +99,5 @@ struct CalTrackerView : View{
     }
 }
 #Preview {
-    ContentView()
+    RootView()
 }

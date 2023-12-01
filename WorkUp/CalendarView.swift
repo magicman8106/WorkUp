@@ -279,7 +279,6 @@ struct CalendarView : View{
     
    
     @State var selectedDateString : String = ""
-    @ObservedObject var viewManager : ViewManager
     @ObservedObject var calendarViewManager = CalendarViewManager()
     @ObservedObject var userData = UserData()
     var body : some View {
@@ -299,7 +298,7 @@ struct CalendarView : View{
         }
         .onAppear{
             let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
-            viewManager.currentView = authUser == nil ? "loginView" : "calendarView"
+            
         }
         .background(Color("app_background"))
     }
@@ -385,7 +384,7 @@ struct CalendarViewRepresentable : UIViewRepresentable{
     
 }
 #Preview {
-    ContentView()
+    RootView()
 }
 
 extension Date {

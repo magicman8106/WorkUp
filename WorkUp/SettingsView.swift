@@ -25,14 +25,14 @@ final class SettingsViewModel: ObservableObject {
 }
 struct SettingsView: View{
     @StateObject private var viewModel = SettingsViewModel()
-    @ObservedObject var viewManager : ViewManager
+    @Binding var showSignInView : Bool
     var body: some View{
         List{
             Button("Logout") {
                 Task{
                     do {
                         try viewModel.logOut()
-                        viewManager.currentView="loginView"
+                        showSignInView = true
                     }catch {
                         print(error)
                     }
@@ -57,5 +57,5 @@ struct SettingsView: View{
 }
 
 #Preview {
-    ContentView()
+    RootView()
 }

@@ -45,6 +45,6 @@ struct WorkoutCollapsedCellView : View {
                         }
                     }
                 }
-            }.frame(height: 300)
+            }.frame(height: .infinity)
         }
     }

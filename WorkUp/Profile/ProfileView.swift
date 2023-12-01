@@ -17,9 +17,9 @@ final class ProfileViewModel : ObservableObject{
     }
 }
 struct ProfileView: View{
-    @ObservedObject var viewManager : ViewManager
     @StateObject private var viewModel = ProfileViewModel()
-    
+    @Binding var showSignInView : Bool
+
     var body: some View{
         
             List{
@@ -45,7 +45,7 @@ struct ProfileView: View{
                 
                 ToolbarItem(placement: .navigationBarTrailing){
                     NavigationLink{
-                        SettingsView(viewManager: viewManager)
+                        SettingsView(showSignInView: $showSignInView)
                     } label : {
                         Image(systemName:"gear")
                             .font(.headline)
@@ -59,6 +59,8 @@ struct ProfileView: View{
         
     }
 }
-#Preview {
-    ContentView()
+struct ProfileView_Previews : PreviewProvider {
+    static var previews : some View {
+        RootView()
+    }
 }
