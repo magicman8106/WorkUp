@@ -51,7 +51,7 @@ struct WorkoutView : View{
         .onAppear{
             viewModel.getWorkoutPresets()
         }
-    }
+        }
 }
 
 

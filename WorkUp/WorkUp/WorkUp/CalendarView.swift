@@ -296,10 +296,10 @@ struct CalendarView : View{
             
             
         }
-//        .onAppear{
-//            let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
-//            
-//        }
+        .onAppear{
+            let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
+            
+        }
         .background(Color("app_background"))
     }
 }
