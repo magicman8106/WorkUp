@@ -45,39 +45,39 @@ struct TrackedMeal : Codable{
     
 }
 
-@MainActor
-final class CalorieTrackerViewModel : ObservableObject {
-    @Published private(set) var trackedWorkouts : [TrackedWorkout] = []
-    func getTrackedWorkouts(){
-        Task{
-            do{
-                let authDataResults = try AuthenticationManager.shared.getAuthenticatedUser()
-                self.trackedWorkouts = try await UserManager.shared.getAllTrackedWorkouts(userId : authDataResults.uid)
-                
-            } catch{
-                print("error \(error)")
-            }
-        }
-    }
-    func updateTrackedWorkouts(updatedTrackedWorkout : TrackedWorkout) async throws {
-        Task{
-            do{
-                let authDataResults = try AuthenticationManager.shared.getAuthenticatedUser()
-                try await UserManager.shared.updateTrackedWorkout(userId: authDataResults.uid, updatedTrackedWorkout: updatedTrackedWorkout)
-                getTrackedWorkouts()
-            } catch{
-                print("error \(error)")
-            }
-        }
-    }
-    func addTrackedWorkout(newTrackedWorkout : TrackedWorkout) async throws {
-        Task {
-            do{
-                let authDataResults = try AuthenticationManager.shared.getAuthenticatedUser()
-                try await UserManager.shared.addTrackedWorkout(userId: authDataResults.uid, newTrackedWorkout: newTrackedWorkout)
-                getTrackedWorkouts()
-            }
-        }
-    }
-}
+//@MainActor
+//final class CalorieTrackerViewModel : ObservableObject {
+//    @Published private(set) var trackedWorkouts : [TrackedWorkout] = []
+//    func getTrackedWorkouts(){
+//        Task{
+//            do{
+//                let authDataResults = try AuthenticationManager.shared.getAuthenticatedUser()
+//                self.trackedWorkouts = try await UserManager.shared.getAllTrackedWorkouts(userId : authDataResults.uid)
+//                
+//            } catch{
+//                print("error \(error)")
+//            }
+//        }
+//    }
+//    func updateTrackedWorkouts(updatedTrackedWorkout : TrackedWorkout) async throws {
+//        Task{
+//            do{
+//                let authDataResults = try AuthenticationManager.shared.getAuthenticatedUser()
+//                try await UserManager.shared.updateTrackedWorkout(userId: authDataResults.uid, updatedTrackedWorkout: updatedTrackedWorkout)
+//                getTrackedWorkouts()
+//            } catch{
+//                print("error \(error)")
+//            }
+//        }
+//    }
+//    func addTrackedWorkout(newTrackedWorkout : TrackedWorkout) async throws {
+//        Task {
+//            do{
+//                let authDataResults = try AuthenticationManager.shared.getAuthenticatedUser()
+//                try await UserManager.shared.addTrackedWorkout(userId: authDataResults.uid, newTrackedWorkout: newTrackedWorkout)
+//                getTrackedWorkouts()
+//            }
+//        }
+//    }
+//}
 

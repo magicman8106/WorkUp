@@ -14,7 +14,6 @@ struct Exercise : Codable {
     var reps : Int
     var sets : Int
     var pr : Int
-    
     init(name: String, reps : Int, sets : Int, pr : Int){
         self.name = name
         self.reps = reps
