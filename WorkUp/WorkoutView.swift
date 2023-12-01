@@ -54,7 +54,7 @@ struct WorkoutView : View{
             
             Spacer().frame(height: 200)
         }
-        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
+        .frame(maxWidth: .infinity)
         .background(Color.appBackground)
         
             

@@ -13,19 +13,19 @@ struct TabBarView : View {
         TabView{
             NavigationStack{
                 WorkoutView()
-                    .tabItem {
-                        Image(systemName : "figure.strengthtraining.traditional").font(.system(size: 20))
-                        
-                        Text("Workouts")
-                    }
+                    
+            }.tabItem {
+                Image(systemName : "figure.strengthtraining.traditional").font(.system(size: 20))
+                
+                Text("Workouts")
             }
             NavigationStack{
                 CalTrackerView()
-                    .tabItem{
-                        Image(systemName : "figure.strengthtraining.traditional").font(.system(size: 20))
-                        Spacer().frame(height: 5)
-                        Text("Calories")
-                    }
+                  
+            }.tabItem{
+                Image(systemName : "figure.strengthtraining.traditional").font(.system(size: 20))
+                Spacer().frame(height: 5)
+                Text("Calories")
             }
 //            NavigationStack{
 //                CalendarView().tabItem{
@@ -34,12 +34,12 @@ struct TabBarView : View {
 //                }
 //            }
             NavigationStack{
-                ProfileView(showSignInView: $showSignInView).tabItem{
-                    Spacer().frame(height: 6)
-                    Image(systemName : "person.circle").font(.system(size: 20))
-                    Spacer().frame(height: 5)
-                    Text("Profile").padding(.top, 2.0)
-                }
+                ProfileView(showSignInView: $showSignInView)
+            }.tabItem{
+                Spacer().frame(height: 6)
+                Image(systemName : "person.circle").font(.system(size: 20))
+                Spacer().frame(height: 5)
+                Text("Profile").padding(.top, 2.0)
             }
         }
     }
