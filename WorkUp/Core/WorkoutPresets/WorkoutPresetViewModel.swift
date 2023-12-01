@@ -74,7 +74,16 @@ struct Workout : Codable {
 @MainActor
 final class WorkoutPresetViewModel : ObservableObject {
     @Published var workoutPresets : [Workout] = []
-    
+    func addWorkoutPreset(newWorkoutPreset : Workout){
+        Task{
+            do{
+                let authDataResults = try AuthenticationManager.shared.getAuthenticatedUser()
+                try await UserManager.shared.addWorkoutPreset(userId: authDataResults.uid, newWorkoutPreset: newWorkoutPreset)
+            } catch{
+                print("error \(error)")
+            }
+        }
+    }
     func getWorkoutPresets(){
         Task{
             do{
