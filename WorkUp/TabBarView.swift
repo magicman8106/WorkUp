@@ -20,19 +20,21 @@ struct TabBarView : View {
                 Text("Workouts")
             }
             NavigationStack{
-                CalTrackerView()
+                CalorieTrackerView()
                   
             }.tabItem{
                 Image(systemName : "figure.strengthtraining.traditional").font(.system(size: 20))
                 Spacer().frame(height: 5)
                 Text("Calories")
             }
-//            NavigationStack{
-//                CalendarView().tabItem{
-//                    Spacer().frame(height: 6)
-//                    Image(systemName : "calendar").font(.system(size: 20)); Text("Calendar").padding(.top, 2.0)
-//                }
-//            }
+            NavigationStack{
+                CalendarView()
+                
+            }.tabItem{
+                    Spacer().frame(height: 6)
+                    Image(systemName : "calendar").font(.system(size: 20))
+                    Text("Calendar").padding(.top, 2.0)
+                }
             NavigationStack{
                 ProfileView(showSignInView: $showSignInView)
             }.tabItem{
@@ -43,5 +45,4 @@ struct TabBarView : View {
             }
         }
     }
-    
 }
