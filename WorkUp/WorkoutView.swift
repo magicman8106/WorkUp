@@ -65,7 +65,18 @@ struct WorkoutView : View{
                 List{
                     ForEach(viewModel.workoutPresets, id:\.workoutId) {
                         workout in
-                        WorkoutCollapsedCellView(workout: workout)
+                            WorkoutCollapsedCellView(workout: workout)
+                       
+//                        if(selectedMuscleGroupId == workout.workoutId) {
+//                           Text("workut.")
+//                        }
+//                        else
+//                        {
+//                            Button(action: {selectedMuscleGroupId = group.workoutId}){
+//                            Text(group.title).font(.custom("OpenSans-SemiBold", size: 20.0)).foregroundColor(.black)}
+//                                                        .padding(.vertical, 5.0).frame(width: 300).frame(maxWidth: .infinity) .font(.custom("OpenSans-SemiBold", size: 25.0))
+//                        }
+                       
                     }
                 }
                 
